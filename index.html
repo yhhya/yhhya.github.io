@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formspree.io https://api.web3forms.com; form-action 'self' https://formspree.io https://api.web3forms.com; base-uri 'self'">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yahya Hossain | Computer Science Student, Tutor &amp; Graphic Designer</title>
+  <meta name="description" content="Portfolio of Yahya Hossain: computer science and engineering student, school tutor and graphic designer. Writing and contact.">
+  <meta name="theme-color" content="#2a1d16">
+  <!-- Social share preview -->
+  <meta property="og:title" content="Yahya Hossain | Portfolio">
+  <meta property="og:description" content="Computer science student, tutor and graphic designer.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yhhya.github.io/">
+  <link rel="canonical" href="https://yhhya.github.io/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%98%95%3C/text%3E%3C/svg%3E">
+
+  <!-- Fonts (open source, Google Fonts): Fraunces = headings, Figtree = text, Amiri = Arabic name -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Figtree:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap">
+
+  <script src="js/theme.js"></script> <!-- runs first so the page never flashes the wrong theme -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Structured data helps Google understand who you are -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Person","name":"Yahya Hossain","alternateName":"يحيى حسين",
+   "jobTitle":"Computer Science Student, Tutor, Graphic Designer","url":"https://yhhya.github.io/",
+   "sameAs":["https://github.com/yhhya"]}
+  </script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <a class="brand" href="#home">Yahya Hossain</a>
+  <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav id="nav" aria-label="Main">
+    <a href="#about">About</a>
+    <!-- Projects link (hidden for now). To bring it back, remove the comment markers:
+    <a href="#projects" id="navProjects">Projects</a>
+    -->
+    <a href="#skills">Skills</a><a href="#experience">Experience</a>
+    <a href="#blog" id="navBlog" hidden>Writing</a><a href="#contact">Contact</a>
+  </nav>
+  <button class="theme-btn" id="themeBtn" aria-label="Switch between light and dark mode">Dark</button>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <p class="ar" lang="ar" dir="rtl">يحيى حسين</p>
+    <h1>Yahya Hossain</h1>
+    <p class="lead">I study computer science and engineering, teach middle and high school students, and design graphics. I like making things that are clear, useful and good to look at.</p>
+    <div class="actions">
+      <a class="btn primary" href="#contact">Contact me</a>
+      <!-- These two stay hidden until there is something to show (see js/content.js) -->
+      <a class="btn" id="cvBtn" href="#" download hidden>Download CV</a>
+      <a class="btn" id="writingBtn" href="#blog" hidden>Read my writing</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>About</h2>
+    <div class="prose">
+      <p>I’m a computer science and engineering student who enjoys understanding how things work, then explaining them simply. That habit comes from tutoring: teaching middle and high school students has taught me to break hard ideas into small, clear steps.</p>
+      <p>Alongside my studies I work as a graphic designer, making logos, posters and social media visuals. Code and design feed each other: one gives me structure, the other gives me taste.</p>
+      <p>I’m open to internships, freelance design work, and collaborations on student or open-source projects.</p>
+    </div>
+  </section>
+
+  <!-- PROJECTS (hidden for now). To bring it back: remove the comment markers here and around
+       the nav link above, then add projects in js/content.js. It also hides itself while empty.
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="grid" id="projectList"></div>
+  </section>
+  -->
+
+  <!-- SKILLS: filled from js/content.js -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills" id="skillList"></div>
+  </section>
+
+  <!-- EXPERIENCE: filled from js/content.js -->
+  <section id="experience">
+    <h2>Experience</h2>
+    <ol class="timeline" id="expList"></ol>
+  </section>
+
+  <!-- WRITING: filled from js/content.js. Stays hidden until you publish your first post. -->
+  <section id="blog" hidden>
+    <h2>Writing</h2>
+    <div class="posts" id="postList"></div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p class="prose">Have a project, a tutoring question or just want to say hello? Send a message and I’ll reply within a few days.</p>
+    <div class="contact-wrap">
+      <!-- Set the form action in js/content.js (site.formAction). Without it, the form opens your email app. -->
+      <form id="contactForm" method="POST" novalidate>
+        <label>Name <input name="name" required autocomplete="name"></label>
+        <label>Email <input name="email" type="email" required autocomplete="email"></label>
+        <label>Message <textarea name="message" rows="5" required></textarea></label>
+        <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true"> <!-- spam trap: humans never see it -->
+        <button class="btn primary" type="submit">Send message</button>
+        <p id="formStatus" role="status"></p>
+      </form>
+      <ul class="links" id="linkList"></ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>© <span id="year"></span> Yahya Hossain. Built by hand with HTML, CSS and a little JavaScript.</p>
+</footer>
+
+<script src="js/content.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

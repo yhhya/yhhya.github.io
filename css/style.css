@@ -1,0 +1,165 @@
+/* ==========================================================
+   STYLES. Colours live in the :root blocks below.
+   Change a colour once and the whole site updates.
+   ========================================================== */
+
+/* Light mode: milk, latte and roasted bean */
+:root {
+  --bg: #f3eadf;        /* latte foam */
+  --surface: #fbf6ef;   /* milk */
+  --text: #35241a;      /* roasted bean */
+  --muted: #7b6455;     /* mocha */
+  --accent: #7a4a2b;    /* cinnamon brown (links, buttons) */
+  --on-accent: #fbf6ef;
+  --line: #dccbb9;      /* biscotti */
+  --radius: 6px;
+}
+/* Dark mode: espresso */
+:root[data-theme="dark"] {
+  --bg: #1d1410;
+  --surface: #281c16;
+  --text: #f0e3d4;
+  --muted: #b8a08d;
+  --accent: #d7a06a;    /* caramel */
+  --on-accent: #1d1410;
+  --line: #3c2c22;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }   /* smooth scrolling */
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font: 400 1.0625rem/1.7 Figtree, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { font-family: Fraunces, Georgia, "Times New Roman", serif; line-height: 1.15; margin: 0 0 .5rem; }
+h2 { font-size: 2rem; margin-bottom: 1.5rem; }
+h3 { font-size: 1.2rem; }
+p { margin: 0 0 1rem; }
+a { color: var(--accent); }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.skip { position: absolute; left: -999px; }
+.skip:focus { left: 1rem; top: 1rem; background: var(--surface); padding: .5rem 1rem; z-index: 10; }
+
+/* ---- Layout: one centred column ---- */
+section, footer, .top { max-width: 62rem; margin-inline: auto; padding-inline: 1.5rem; }
+section { padding-block: 4rem; border-top: 1px solid var(--line); }
+.prose { max-width: 40rem; }
+
+/* ---- Header ---- */
+.top {
+  position: sticky; top: 0; z-index: 5; max-width: none; background: var(--bg);
+  display: flex; align-items: center; gap: 1.25rem; padding: .75rem max(1.5rem, calc((100% - 62rem) / 2));
+  border-bottom: 1px solid var(--line);
+}
+.brand { font: 700 1.15rem Fraunces, Georgia, serif; color: var(--text); text-decoration: none; margin-right: auto; }
+nav { display: flex; gap: 1.25rem; }
+nav a { color: var(--muted); text-decoration: none; font-weight: 500; }
+nav a:hover { color: var(--accent); }
+.theme-btn, .menu-btn {
+  font: inherit; font-size: .95rem; color: var(--text); background: none;
+  border: 1px solid var(--line); border-radius: var(--radius); padding: .3rem .8rem; cursor: pointer;
+}
+.menu-btn { display: none; }
+
+/* ---- Hero: the Arabic name is the memorable moment ---- */
+.hero { border-top: 0; padding-block: 6rem 5rem; }
+.ar { font: 700 clamp(3rem, 10vw, 5.5rem)/1.3 Amiri, "Noto Naskh Arabic", serif; color: var(--accent); margin: 0; }
+.hero h1 { font-size: clamp(2.2rem, 6vw, 3.5rem); }
+.lead { font-size: 1.25rem; max-width: 36rem; color: var(--muted); margin-top: 1rem; }
+.actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }
+.btn {
+  display: inline-block; font: 600 1rem Figtree, sans-serif; text-decoration: none; cursor: pointer;
+  color: var(--text); background: none; border: 1.5px solid var(--text); border-radius: var(--radius); padding: .65rem 1.2rem;
+}
+.btn:hover { background: var(--surface); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.btn.primary:hover { filter: brightness(1.1); }
+
+/* ---- Cards, tags, lists ---- */
+.grid, .posts { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); }
+.card, .post, .skill-group { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.25rem; }
+.card img { width: 100%; height: auto; border-radius: var(--radius); margin-bottom: 1rem; }
+.post { display: block; color: var(--text); text-decoration: none; }
+.post:hover h3 { color: var(--accent); }
+.meta { color: var(--muted); font-size: .9rem; margin-bottom: .25rem; }
+.more { font-weight: 600; }
+.tags { list-style: none; display: flex; flex-wrap: wrap; gap: .4rem; padding: 0; margin: .5rem 0 0; }
+.tags li { font-size: .85rem; padding: .1rem .65rem; border: 1px solid var(--line); border-radius: 99px; color: var(--muted); }
+.skills { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
+
+/* ---- Experience timeline (it is a real sequence, so a line makes sense) ---- */
+.timeline { list-style: none; margin: 0; padding: 0 0 0 1.5rem; border-left: 2px solid var(--line); }
+.timeline li { position: relative; margin-bottom: 2rem; max-width: 40rem; }
+.timeline li::before {
+  content: ""; position: absolute; left: -1.95rem; top: .55rem; width: .75rem; height: .75rem;
+  background: var(--accent); border-radius: 50%;
+}
+
+/* ---- Contact ---- */
+.contact-wrap { display: grid; gap: 3rem; grid-template-columns: 1.5fr 1fr; margin-top: 1.5rem; }
+form label { display: block; font-weight: 500; margin-bottom: 1rem; }
+input, textarea {
+  width: 100%; margin-top: .3rem; font: inherit; color: var(--text); background: var(--surface);
+  border: 1px solid var(--line); border-radius: var(--radius); padding: .6rem .8rem;
+}
+.hp { position: absolute; left: -9999px; }
+#formStatus { margin: .75rem 0 0; color: var(--muted); }
+.links { list-style: none; padding: 0; margin: 0; }
+.links li { margin-bottom: .5rem; }
+footer { padding-block: 2rem 3rem; color: var(--muted); font-size: .9rem; border-top: 1px solid var(--line); }
+
+/* ---- Phones and small screens ---- */
+@media (max-width: 720px) {
+  .menu-btn { display: block; }
+  nav { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0;
+        background: var(--bg); border-bottom: 1px solid var(--line); }
+  nav.open { display: flex; }
+  nav a { padding: .9rem 1.5rem; }
+  .brand { font-size: 1rem; }
+  .contact-wrap { grid-template-columns: 1fr; gap: 2rem; }
+  section { padding-block: 3rem; }
+}
+/* Respect visitors who turn animations off */
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* ==========================================================
+   Added for the writing features
+   ========================================================== */
+[hidden] { display: none !important; }       /* makes the hidden attribute win over display rules */
+.top nav a, .links a { overflow-wrap: anywhere; }
+
+/* ---- A single post (and the live preview) ---- */
+.article { max-width: 42rem; margin-inline: auto; padding: 3rem 1.5rem 4rem; }
+.article h1 { font-size: clamp(2rem, 5vw, 2.8rem); margin-bottom: .75rem; }
+.article h2 { font-size: 1.6rem; margin: 2.2rem 0 .75rem; }
+.article h3 { font-size: 1.25rem; margin: 1.8rem 0 .5rem; }
+.article h4 { font-size: 1.05rem; margin: 1.5rem 0 .5rem; }
+.article p, .article li { line-height: 1.8; }
+.article ul, .article ol { padding-left: 1.4rem; margin: 0 0 1rem; }
+.article img { max-width: 100%; height: auto; border-radius: var(--radius); }
+.article blockquote { margin: 1.25rem 0; padding: .25rem 1.25rem; border-left: 3px solid var(--accent); color: var(--muted); }
+.article hr { border: 0; border-top: 1px solid var(--line); margin: 2rem 0; }
+.article code { font: .9em ui-monospace, "SF Mono", Menlo, Consolas, monospace; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: .05rem .35rem; }
+.article pre { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem; margin: 0 0 1.25rem; }
+.article pre code { background: none; border: 0; padding: 0; }
+.article .back { display: inline-block; margin-bottom: 1.5rem; font-weight: 600; }
+
+/* ---- Writing page ---- */
+.editor-page { max-width: 62rem; margin-inline: auto; padding: 3rem 1.5rem 4rem; border-top: 0; }
+.editor-grid { display: grid; gap: 2rem; grid-template-columns: 1fr 1fr; margin: 1.5rem 0 2.5rem; align-items: start; }
+.editor-form .row { display: grid; gap: 1rem; grid-template-columns: 1fr 1.4fr; }
+.editor-form textarea { font: .95rem/1.6 ui-monospace, "SF Mono", Menlo, Consolas, monospace; resize: vertical; }
+.file-row { display: flex; flex-wrap: wrap; gap: .75rem; margin: 0; }
+.file-row .btn { margin: 0; }
+.preview { max-width: none; margin: 0; padding: 1rem 1.25rem; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); min-height: 12rem; }
+.steps { padding-left: 1.4rem; max-width: 42rem; }
+.steps li { margin-bottom: 1.5rem; }
+.steps .actions { margin-top: .5rem; }
+.status { min-height: 1.5rem; color: var(--muted); }
+#entryBox { width: 100%; font: .9rem ui-monospace, Menlo, Consolas, monospace; }
+@media (max-width: 900px) {
+  .editor-grid { grid-template-columns: 1fr; }
+  .editor-form .row { grid-template-columns: 1fr; }
+}
+.editor-form label { display: block; font-weight: 500; margin-bottom: 1rem; }
+.editor-form .file-row label { display: inline-block; margin: 0; }
